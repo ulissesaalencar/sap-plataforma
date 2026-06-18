@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: sap-gee-service
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    plan: free
+    envVars:
+      - key: GEE_SERVICE_ACCOUNT
+        sync: false   # preencher no painel do Render
+      - key: GEE_KEY_JSON
+        sync: false   # colar o JSON completo da conta de serviço
